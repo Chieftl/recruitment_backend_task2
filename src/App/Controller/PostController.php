@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use App\Repository\PostRepository;
 use Domain\Post\PostManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -23,7 +22,7 @@ class PostController extends AbstractController
      */
     public function index(PostManager $postManager): Response
     {
-        $posts = $postRepository->findBy([], ['id' => 'desc'], 100);
+        $posts = $postManager->listPosts();
 
         return $this->render('post/index.html.twig', [
             'posts' => $posts,

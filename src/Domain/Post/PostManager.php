@@ -23,7 +23,13 @@ class PostManager
         $this->em->flush();
     }
 
-    public function findPost($id): Post
+    public function listPosts(array $opts = ['id' => 'desc'], int $limit = 100): array
+    {
+        $postRepository = $this->em->getRepository(Post::class);
+        return $postRepository->findBy([], $opts, $limit);
+    }
+
+    public function findPost(int $id): ?Post
     {
         $postRepository = $this->em->getRepository(Post::class);
 
