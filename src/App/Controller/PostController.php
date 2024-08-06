@@ -34,8 +34,15 @@ class PostController extends AbstractController
      */
     public function show(PostManager $postManager, int $id): Response
     {
+        $post = $postManager->findPost($id);
+
+        if (!$post) {
+            throw $this->createNotFoundException('The post does not exist');
+        }
+
         return $this->render('post/show.html.twig', [
-            'post' => $postManager->findPost($id),
+            'post' => $post,
+        ]);
         ]);
     }
 }
