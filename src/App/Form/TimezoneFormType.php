@@ -6,6 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\Regex;
 
 class TimezoneFormType extends AbstractType
 {
@@ -24,6 +25,11 @@ class TimezoneFormType extends AbstractType
                 ],
                 'constraints' => [
                     new NotBlank(),
+                    new Regex([
+                        'pattern' => '/^\d{4}-(0[1-9]|1[012])-(0[1-9]|[12]\d|3[01])$/',
+                        'htmlPattern' => '/^\d{4}-(0[1-9]|1[012])-(0[1-9]|[12]\d|3[01])$/',
+                        'message' => 'Please enter a valid date in the format Y-m-d.',
+                    ]),
                 ],
             ])
             ->add('timezone', TextType::class, [
@@ -33,6 +39,11 @@ class TimezoneFormType extends AbstractType
                 ],
                 'constraints' => [
                     new NotBlank(),
+                    new Regex([
+                        'pattern' => '/^[a-zA-Z_-]{5,}\/[a-zA-Z_-]{5,}$/',
+                        'htmlPattern' => '/^[a-zA-Z_-]{6,}\/[a-zA-Z_-]{3,}$/',
+                        'message' => 'Please enter a valid timezone in the format Continent/City.',
+                    ]),
                 ],
             ]);
     }
