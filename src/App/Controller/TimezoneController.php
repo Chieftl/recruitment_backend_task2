@@ -37,5 +37,7 @@ class TimezoneController extends AbstractController
     {
         $date = new \DateTime($request->get('date'));
         $timezone = $request->get('timezone');
+
+        return $this->render('timezone/result.html.twig', $timezoneService->getFields($date, $timezone));
     }
 }

@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Result{% endblock %}
+
+{% block body %}
+    <h1>Form Submitted Successfully!</h1>
+
+    <p>The time zone {{ timezone }} has {{ offsetMinutes }} minutes offset to UTC on the given day at noon.</p>
+    <p>February in this year is {{ februaryLength }} days long.</p>
+    <p>The specified month ({{ monthName }}) is {{ monthLength }} days long.</p>
+{% endblock %}
