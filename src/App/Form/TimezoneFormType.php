@@ -19,12 +19,18 @@ class TimezoneFormType extends AbstractType
         $builder
             ->add('date', TextType::class, [
                 'label' => 'Date: ',
+                'attr' => [
+                    'placeholder' => 'Y-m-d',
+                ],
                 'constraints' => [
                     new NotBlank(),
                 ],
             ])
             ->add('timezone', TextType::class, [
                 'label' => 'Timezone: ',
+                'attr' => [
+                    'placeholder' => 'e.g. Europe/London, Asia/Tokyo, America/Lower_Princes',
+                ],
                 'constraints' => [
                     new NotBlank(),
                 ],
