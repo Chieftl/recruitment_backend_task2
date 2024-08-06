@@ -9,16 +9,16 @@
 </style>
 
 <div class="example-wrapper">
-    <article>
 
-        {% for post in posts %}
+    {% for post in posts %}
+        <article>
             <h1><a href="{{ path('app_post_show', {id: post.id}) }}">{{ post.title }}</a></h1>
 
             <p>
                 {{ post.content | nl2br }}
             </p>
-        {% endfor %}
+        </article>
+    {% endfor %}
 
-    </article>
 </div>
 {% endblock %}
