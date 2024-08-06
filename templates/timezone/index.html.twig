@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Timezone form{% endblock %}
+
+{% block body %}
+
+<div class="example-wrapper">
+    <h1>Timezone Form</h1>
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <button type="submit">Submit</button>
+    {{ form_end(form) }}
+</div>
+{% endblock %}
