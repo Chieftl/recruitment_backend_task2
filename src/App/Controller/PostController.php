@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Post;
 use Domain\Post\PostManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -32,17 +33,10 @@ class PostController extends AbstractController
     /**
      * @Route("/post/{id<\d+>}", name="app_post_show")
      */
-    public function show(PostManager $postManager, int $id): Response
+    public function show(PostManager $postManager, Post $post): Response
     {
-        $post = $postManager->findPost($id);
-
-        if (!$post) {
-            throw $this->createNotFoundException('The post does not exist');
-        }
-
         return $this->render('post/show.html.twig', [
             'post' => $post,
-        ]);
         ]);
     }
 }
