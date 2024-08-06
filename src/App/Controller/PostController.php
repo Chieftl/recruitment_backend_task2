@@ -30,9 +30,9 @@ class PostController extends AbstractController
     }
 
     /**
-     * @Route("/post/{id}", name="app_post_show")
+     * @Route("/post/{id<\d+>}", name="app_post_show")
      */
-    public function show(PostManager $postManager, $id): Response
+    public function show(PostManager $postManager, int $id): Response
     {
         return $this->render('post/show.html.twig', [
             'post' => $postManager->findPost($id),
