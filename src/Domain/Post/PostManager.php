@@ -33,6 +33,6 @@ class PostManager
     {
         $postRepository = $this->em->getRepository(Post::class);
 
-        return $postRepository->findOneBy(['id' => $id]);
+        return $postRepository->find($id);
     }
 }
