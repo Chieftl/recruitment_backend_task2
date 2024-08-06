@@ -35,4 +35,13 @@ class PostManager
 
         return $postRepository->find($id);
     }
+
+    public function isSummaryPost(): bool
+    {
+        $postRepository = $this->em->getRepository(Post::class);
+
+        $title = "Summary " . date("Y-m-d");
+        $found = (null !== $postRepository->findOneBy(['title' => $title]));
+        return $found;
+    }
 }

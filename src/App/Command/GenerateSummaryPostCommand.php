@@ -33,6 +33,12 @@ class GenerateSummaryPostCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
+        $isSummaryPost = $this->postManager->isSummaryPost();
+        if ($isSummaryPost) {
+            $output->writeln('A summary post for current day already exists.');
+            return Command::FAILURE;
+        }
+
         $title = "Summary " . date("Y-m-d");
         $content = $this->loremIpsum->paragraphs(1);
 
