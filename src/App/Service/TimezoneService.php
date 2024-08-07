@@ -13,7 +13,7 @@ class TimezoneService
         $offsetSeconds = $timezone->getOffset(new DateTime());
         $offsetMinutes = $offsetSeconds / 60;
 
-        $sign = $offsetMinutes > 0 ? '+' : '';
+        $sign = $offsetMinutes > 0 ? '+' : '-';
         return $sign . $offsetMinutes;
     }
 
